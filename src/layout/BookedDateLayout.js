@@ -2,7 +2,8 @@ import React from "react";
 import NavigationBar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-const LoginLayout = () => {
+
+const BookedDateLayout = () => {
   return (
     <>
       <NavigationBar />
@@ -11,4 +12,4 @@ const LoginLayout = () => {
   );
 };
 
-export default LoginLayout;
+export default BookedDateLayout;

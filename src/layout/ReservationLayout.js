@@ -2,7 +2,7 @@ import React from "react";
 import NavigationBar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-const ContactLayout = () => {
+const ReservationLayout = () => {
   return (
     <>
       <NavigationBar />
@@ -11,4 +11,4 @@ const ContactLayout = () => {
   );
 };
 
-export default ContactLayout;
+export default ReservationLayout;

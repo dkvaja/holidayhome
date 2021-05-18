@@ -1,15 +1,16 @@
 import React from "react";
 import NavigationBar from "../components/Navbar";
 import Footer from "../components/Footer";
+import ThingsToDo from "../components/ThingsToDo";
 
-const AboutLayout = () => {
+const ThingsToDoLayout = () => {
   return (
     <>
       <NavigationBar />
-
+      <ThingsToDo/>
       <Footer />
     </>
   );
 };
 
-export default AboutLayout;
+export default ThingsToDoLayout;

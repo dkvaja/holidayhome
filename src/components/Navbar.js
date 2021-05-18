@@ -1,9 +1,10 @@
 import React, { useState, componentDidMount, useEffect } from "react";
+import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import { Navbar } from "react-bootstrap";
 import Logo from "../assets/logo.png";
 import DehazeIcon from "@material-ui/icons/Dehaze";
-import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+
 
 const Header = () => {
   const [toggle, setToggle] = useState(false);
@@ -41,23 +42,34 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link to="/about" className="nav_links">
-              About Us
+            <Link to="/rates" className="nav_links">
+              Rates
             </Link>
           </li>
           <li>
-            <Link to="/contact" className="nav_links">
-              Contact Us
+            <Link to="/bookeddates" className="nav_links">
+              Booked Dates
             </Link>
           </li>
           <li>
-            <Link to="/login" className="nav_links">
-              <Button
+            <Link to="/thingstodo" className="nav_links">
+              Things to do
+            </Link>
+          </li>
+          <li>
+            <Link to="/gallery" className="nav_links">
+              Photo Album
+            </Link>
+          </li>
+          <li>
+            <Link to="/reservation" className="nav_links">
+            Make a Reservation
+              {/* <Button
                 variant="contained"
                 style={{ backgroundColor: "#004b23", color: "white" }}
               >
                 Log In
-              </Button>
+              </Button> */}
             </Link>
           </li>
         </ul>

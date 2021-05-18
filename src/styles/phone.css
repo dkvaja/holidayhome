@@ -1,0 +1,30 @@
+@media screen and (max-width: 1000px) {
+  .navbar {
+    width: 100%;
+    height: auto;
+  }
+  .nav-link-box {
+    height: auto;
+    width: 100%;
+    padding-left: 0rem;
+  }
+  .nav-link-box li {
+    margin: .4rem 0rem;
+  }
+  .non-show {
+    display: none;
+  }
+  .show {
+    display: flex;
+  }
+  .nav_links {
+     margin: 1rem 1rem;
+  }
+  .wrapper {
+    justify-content: space-between;
+    width: 100%;
+  }
+  .menu_btn_wrapper {
+    display: block;
+  }
+}

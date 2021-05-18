@@ -10,8 +10,8 @@ const Services = () => {
   return (
     <>
       <div className="service_container flex-column-center">
-      <h1>Facilities Provided</h1>
-      <p>
+      <h1 className="section-heading">Facilities Provided</h1>
+      <p className="section-desc">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati necessitatibus possimus recusandae corporis laboriosam temporibus 
       </p>
         <div className="service_box flex-row-center">

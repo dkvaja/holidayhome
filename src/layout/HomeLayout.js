@@ -9,7 +9,7 @@ const HomeLayout = () => {
   return (
     <>
       <NavigationBar />
-      <Carousels />
+      <Carousels/>
       <Services />
       <Testimonial/>
       <Footer />

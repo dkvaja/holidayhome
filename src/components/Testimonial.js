@@ -4,10 +4,10 @@ import TestimonialBox from "./TestimonialBox";
 const Testimonial = () => {
   return (
     <>
-      <div className="testimonial_container">
-        <h1>Testimonial</h1>
+      <section className="testimonial_container flex-column-center">
+        <h1 className="section-heading">Testimonial</h1>
         <TestimonialBox />
-      </div>
+      </section>
     </>
   );
 };

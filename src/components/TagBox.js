@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AppContext } from "./GalleryContainer";
 import galleryImages from "../mockData/galleryImages";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
@@ -7,7 +8,6 @@ import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Badge from "@material-ui/core/Badge";
-import Divider from "@material-ui/core/Divider";
 
 const useStyles = makeStyles({
   root: {
@@ -19,19 +19,23 @@ const useStyles = makeStyles({
   card: {
     padding: 0,
   },
-  color:
-  {
-    color:"#004b23"
-  }
+  color: {
+    color: "#004b23",
+  },
 });
 const TagBox = (props) => {
-  console.log(props.search);
+  const { state, dispatch } = useContext(AppContext);
+
+  const sendValue = (newValue) => {
+    const r = newValue === "" ? "" : newValue.split("\n").shift();
+    console.log(r);
+    dispatch({ type: "UPDATE_INPUT", data: r });
+  };
   const classes = useStyles();
 
- 
-  let n = galleryImages.map((item, index) => item.tags);
   let t = [];
-  n = n.map((item) => {
+  let n = galleryImages.map((item, index) => item.tags);
+  n.map((item) => {
     item.split(" ").map((item) => t.push(item.split(" ")));
   });
   t = t.flat();
@@ -50,7 +54,13 @@ const TagBox = (props) => {
             {final.map((item, index) => {
               return (
                 <>
-                  <Link key={index} className="tag_link flex-row-center">
+                  <Link
+                    key={index}
+                    className="tag_link flex-row-center"
+                    onClick={(e) => {
+                      sendValue(e.target.innerText);
+                    }}
+                  >
                     {item.toUpperCase()}
                     <Badge
                       color="secondary"

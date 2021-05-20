@@ -1,20 +1,33 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useContext } from "react";
+import { AppContext } from "./GalleryContainer";
 import Gallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
 import galleryImages from "../mockData/galleryImages";
 
 const ImageGallery = (props) => {
-  console.log(props.search);
+  // value get from searchbox
+  const searchTag = props.search;
 
-  const selectedImages = galleryImages
-    .map((t) => ({
-      ...t,
-    }))
-    .filter((t) => {
-      return t.tags.includes(props.search) === true;
-    });
+  const { state, dispatch } = useContext(AppContext);
+  // get tag name from tagbox using useContext
+  //
+  const clickedTag = state.inputText;
+  console.log(clickedTag);
+  console.log(searchTag);
 
-  console.log(galleryImages);
+  const choosenTag = searchTag === "" ? clickedTag : searchTag;
+  console.log(choosenTag);
+
+  const selectedImages =
+    choosenTag === undefined
+      ? galleryImages
+      : galleryImages
+          .map((item) => ({
+            ...item,
+          }))
+          .filter((item) => {
+            return item.tags.includes(choosenTag.toLowerCase()) === true;
+          });
 
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);

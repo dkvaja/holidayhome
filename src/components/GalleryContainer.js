@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
 import Gallery from "./Gallery";
 import TagBox from "./TagBox";
 import TextField from "@material-ui/core/TextField";
@@ -7,13 +7,31 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   root: {
     margin: "1rem 3rem",
-    zIndex:0
+    zIndex: 0,
   },
 }));
 
+export const AppContext = React.createContext();
+
+const initialState = {
+  clickedTag: "",
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "UPDATE_INPUT":
+      return {
+        inputText: action.data,
+      };
+
+    default:
+      return initialState;
+  }
+}
+
 const GalleryContainer = () => {
   const classes = useStyles();
-
+  const [state, dispatch] = useReducer(reducer, initialState);
   const [search, setSearch] = useState("");
 
   const handleSearch = (event) => {
@@ -36,8 +54,10 @@ const GalleryContainer = () => {
           className={classes.root}
         />
         <div className="gallery_outer_box flex-row-center">
-          <Gallery search={search} />
-          <TagBox search={search} />
+          <AppContext.Provider value={{ state, dispatch }}>
+            <Gallery search={search} />
+            <TagBox search={search} />
+          </AppContext.Provider>
         </div>
       </div>
     </>

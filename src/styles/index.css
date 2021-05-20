@@ -237,7 +237,6 @@ h3 {
 }
 
 .things_to_do_box {
-  
 }
 
 .category_cantainer {
@@ -251,68 +250,53 @@ h3 {
   margin: 1rem;
 }
 
-
-
 /* gallery styling */
 
-.gallery_container
-{
+.gallery_container {
   background-color: rgb(206, 255, 206);
   color: var(--master-color);
   padding: 1rem 3rem;
 }
 
-.gallery_outer_box
-{
+.gallery_outer_box {
   justify-content: space-between;
   align-items: flex-start;
   padding: 2rem 0rem;
 }
-.gallery
-{
-
+.gallery {
   width: 65%;
   display: flex;
   background-color: yellow;
-  
 }
-.gallery:hover
-{
+.gallery:hover {
   width: 65%;
   box-shadow: 0px 0px 4px 0px black;
-
 }
-.tag_box
-{
+.tag_box {
   width: 30%;
 }
-.tag_item
-{
+.tag_item {
   width: 100%;
 }
-.tag_link
-{
+.tag_link {
   color: var(--master-color);
   width: 100%;
   padding: 1rem 1.6rem;
   justify-content: space-between;
   text-decoration: none;
-  border-bottom: .05px solid var(--master-color);
+  border-bottom: 0.05px solid var(--master-color);
 }
-.tag_link:hover
-{
+.tag_link:hover {
   background-color: rgb(211, 211, 211);
   color: var(--master-color);
 }
-.tag_badge
-{
+.tag_badge {
   z-index: 0;
 }
 
 .MuiCardActions-spacing > :not(:first-child) {
   margin-left: 0px;
 }
-
 
 /* footer styling */
 

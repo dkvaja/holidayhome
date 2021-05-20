@@ -237,7 +237,7 @@ h3 {
 }
 
 .things_to_do_box {
-  /* background-color: yellow; */
+  
 }
 
 .category_cantainer {
@@ -259,21 +259,28 @@ h3 {
 {
   background-color: rgb(206, 255, 206);
   color: var(--master-color);
-  padding: 1rem 2rem;
+  padding: 1rem 3rem;
 }
 
 .gallery_outer_box
 {
-  /* background-color: yellow; */
-  margin-top: 2rem;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 2rem;
+  padding: 2rem 0rem;
 }
 .gallery
 {
-  /* background-color: rebeccapurple; */
+
   width: 65%;
+  display: flex;
+  background-color: yellow;
+  
+}
+.gallery:hover
+{
+  width: 65%;
+  box-shadow: 0px 0px 4px 0px black;
+
 }
 .tag_box
 {
@@ -281,22 +288,16 @@ h3 {
 }
 .tag_item
 {
-  display: flex;
-  padding: 0rem;
-  margin-left: 0rem;
-  flex-direction: column;
   width: 100%;
 }
 .tag_link
 {
-  padding: 1rem;
-  width: 100%;
   color: var(--master-color);
-  display: flex;
-  flex-direction: row;
+  width: 100%;
+  padding: 1rem 1.6rem;
   justify-content: space-between;
   text-decoration: none;
-  align-items: center;
+  border-bottom: .05px solid var(--master-color);
 }
 .tag_link:hover
 {
@@ -308,14 +309,11 @@ h3 {
   z-index: 0;
 }
 
-.MuiCardActions-root {
-  display: flex;
-  padding: 0px;
-  align-items: center;
-}
 .MuiCardActions-spacing > :not(:first-child) {
   margin-left: 0px;
 }
+
+
 /* footer styling */
 
 .footer {

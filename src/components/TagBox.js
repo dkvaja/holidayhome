@@ -11,22 +11,24 @@ import Divider from "@material-ui/core/Divider";
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275,
+    minWidth: 300,
     "&:hover": {
       boxShadow: "0px 0px 4px 0px black",
     },
   },
-  title: {
-    fontSize: 14,
+  card: {
+    padding: 0,
   },
-  spacing: {
-      '&:not(:first-child)':{
-          marginLeft:0
-      }
-  },
+  color:
+  {
+    color:"#004b23"
+  }
 });
-const TagBox = () => {
+const TagBox = (props) => {
+  console.log(props.search);
   const classes = useStyles();
+
+ 
   let n = galleryImages.map((item, index) => item.tags);
   let t = [];
   n = n.map((item) => {
@@ -35,32 +37,32 @@ const TagBox = () => {
   t = t.flat();
   const temp = (val) => t.reduce((a, v) => (v === val ? a + 1 : a), 0);
   const final = [...new Set(t)];
-  console.log(final);
   return (
     <div className="tag_box">
-      <Divider />
       <Card className={classes.root}>
         <CardContent>
-          <Typography variant="h5" component="h2">
+          <Typography variant="h5" component="h2" className={classes.color}>
             TAGS
           </Typography>
         </CardContent>
-        <CardActions className="tag_item" >
-          {final.map((item, index) => {
-            return (
-              <>
-                <Link key={index} className="tag_link">
-                  {item.toUpperCase()}
-                  <Badge
-                    color="secondary"
-                    badgeContent={temp(item)}
-                    showZero
-                    className="tag_badge"
-                  ></Badge>
-                </Link>
-              </>
-            );
-          })}
+        <CardActions className={classes.card}>
+          <div className="tag_item flex-column-center">
+            {final.map((item, index) => {
+              return (
+                <>
+                  <Link key={index} className="tag_link flex-row-center">
+                    {item.toUpperCase()}
+                    <Badge
+                      color="secondary"
+                      badgeContent={temp(item)}
+                      showZero
+                      className="tag_badge"
+                    ></Badge>
+                  </Link>
+                </>
+              );
+            })}
+          </div>
         </CardActions>
       </Card>
     </div>

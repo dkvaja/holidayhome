@@ -2,17 +2,19 @@ import React, { useState, useCallback } from "react";
 import Gallery from "react-photo-gallery";
 import Carousel, { Modal, ModalGateway } from "react-images";
 import galleryImages from "../mockData/galleryImages";
-import { makeStyles } from "@material-ui/core/styles";
 
+const ImageGallery = (props) => {
+  console.log(props.search);
 
-const useStyles = makeStyles((theme) => ({
-  gallery: {
-      
-  },
-}));
+  const selectedImages = galleryImages
+    .map((t) => ({
+      ...t,
+    }))
+    .filter((t) => {
+      return t.tags.includes(props.search) === true;
+    });
 
-const ImageGallery = () => {
-  const classes = useStyles();
+  console.log(galleryImages);
 
   const [currentImage, setCurrentImage] = useState(0);
   const [viewerIsOpen, setViewerIsOpen] = useState(false);
@@ -30,13 +32,13 @@ const ImageGallery = () => {
   return (
     <>
       <div className="gallery">
-        <Gallery photos={galleryImages} onClick={openLightbox} />
+        <Gallery photos={selectedImages} onClick={openLightbox} />
         <ModalGateway>
           {viewerIsOpen ? (
             <Modal onClose={closeLightbox}>
               <Carousel
                 currentIndex={currentImage}
-                views={galleryImages.map((x) => ({
+                views={selectedImages.map((x) => ({
                   ...x,
                   srcset: x.srcSet,
                   caption: x.title,

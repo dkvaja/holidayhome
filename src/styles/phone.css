@@ -1,6 +1,6 @@
 @media screen and (max-width: 1116px) {
   body {
-    font-size: 10px;
+    font-size: 12px;
   }
   .navbar {
     width: 100%;
@@ -22,24 +22,31 @@
     margin: 0rem;
     justify-content: center;
     align-items: center;
-    padding: .7rem 0rem;
+    padding: 0.7rem 0rem;
     flex-direction: column;
- }
+  }
   .nav_links:hover {
     background-color: rgb(223, 223, 223);
- }
+  }
   .non-show {
     display: none;
   }
   .show {
     display: flex;
   }
-  
+
   .wrapper {
     justify-content: space-between;
     width: 100%;
   }
   .menu_btn_wrapper {
     display: block;
+  }
+
+  .tag_box {
+    display: none;
+  }
+  .gallery {
+    width: 100%;
   }
 }

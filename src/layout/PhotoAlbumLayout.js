@@ -1,14 +1,16 @@
-import React from 'react'
+import React from "react";
 import NavigationBar from "../components/Navbar";
 import Footer from "../components/Footer";
+import GalleryContainer from "../components/GalleryContainer";
 
 const PhotoAlbumLayout = () => {
-    return (
-        <>
+  return (
+    <>
       <NavigationBar />
+      <GalleryContainer />
       <Footer />
     </>
-    )
-}
+  );
+};
 
-export default PhotoAlbumLayout
+export default PhotoAlbumLayout;

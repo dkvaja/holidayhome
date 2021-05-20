@@ -1,9 +1,9 @@
 import React, { useState, componentDidMount, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
-import { Navbar } from "react-bootstrap";
 import Logo from "../assets/logo.png";
 import DehazeIcon from "@material-ui/icons/Dehaze";
+import CloseIcon from '@material-ui/icons/Close';
 
 
 const Header = () => {
@@ -31,7 +31,7 @@ const Header = () => {
           </div>
           <div className="menu_btn_wrapper">
             <button onClick={handleToggle}>
-              <DehazeIcon className="menu_btn" />
+            {toggle? <CloseIcon className="menu_btn"/> : <DehazeIcon className="menu_btn" />}
             </button>
           </div>
         </div>
@@ -63,13 +63,12 @@ const Header = () => {
           </li>
           <li>
             <Link to="/reservation" className="nav_links">
-            Make a Reservation
-              {/* <Button
+              <Button
                 variant="contained"
-                style={{ backgroundColor: "#004b23", color: "white" }}
+                style={{ backgroundColor: "#004b23", color: "white",width:"13rem" }}
               >
-                Log In
-              </Button> */}
+                Make a Reservation
+              </Button>
             </Link>
           </li>
         </ul>

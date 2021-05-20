@@ -1,10 +1,11 @@
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1116px) {
   body {
     font-size: 10px;
   }
   .navbar {
     width: 100%;
     height: auto;
+    padding: 0rem;
   }
   .nav-link-box {
     height: auto;
@@ -12,17 +13,28 @@
     padding-left: 0rem;
   }
   .nav-link-box li {
-    margin: .4rem 0rem;
+    width: 100%;
+    text-align: center;
   }
+  .nav_links {
+    width: 100%;
+    display: flex;
+    margin: 0rem;
+    justify-content: center;
+    align-items: center;
+    padding: .7rem 0rem;
+    flex-direction: column;
+ }
+  .nav_links:hover {
+    background-color: rgb(223, 223, 223);
+ }
   .non-show {
     display: none;
   }
   .show {
     display: flex;
   }
-  .nav_links {
-     margin: 1rem 1rem;
-  }
+  
   .wrapper {
     justify-content: space-between;
     width: 100%;

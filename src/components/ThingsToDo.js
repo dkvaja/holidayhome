@@ -8,17 +8,8 @@ const ThingsToDo = () => {
       <div className="things_to_do_box flex-column-center">
         <h1 className="section-heading">Things to do</h1>
         <div className="category_cantainer flex-row-center">
-          {Data.map((index, detail) => {
-            return (
-              <CategoryBox
-                key={index}
-                category={detail.category}
-                Heading={detail.heading}
-                imageURL={detail.imageURL}
-                desc={detail.desciption}
-                link={detail.link}
-              />
-            );
+          {Data.map((item, index) => {
+            return <CategoryBox key={index} payLoad={item} />;
           })}
         </div>
       </div>

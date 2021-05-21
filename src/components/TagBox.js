@@ -23,18 +23,15 @@ const useStyles = makeStyles({
     color: "#004b23",
   },
 });
-const TagBox = (props) => {
+const TagBox = () => {
   const { state, dispatch } = useContext(AppContext);
   const classes = useStyles();
 
-
-
   const sendValue = (newValue) => {
-    const r = newValue === "" ? "" : newValue.split("\n").shift();
-    console.log(r);
-    dispatch({ type: "UPDATE_INPUT", data: r });
+    const payLoad = newValue === "" ? "" : newValue.split("\n").shift();
+    console.log(payLoad);
+    dispatch({ type: "UPDATE_INPUT", data: payLoad });
   };
-
 
   let tempraryArr = [];
   let nArr = galleryImages.map((item, index) => item.tags);
@@ -42,10 +39,12 @@ const TagBox = (props) => {
     item.split(" ").map((item) => tempraryArr.push(item.split(" ")));
   });
   tempraryArr = tempraryArr.flat();
-  const temp = (val) => tempraryArr.reduce((a, v) => (v === val ? a + 1 : a), 0);
-  const final = [...new Set(tempraryArr)];
 
+  const finalArr = [...new Set(tempraryArr)];
+  // console.log(finalArr);
 
+  const temp = (val) =>
+    tempraryArr.reduce((count, item) => (item === val ? count + 1 : count), 0);
 
   return (
     <div className="tag_box">
@@ -57,7 +56,21 @@ const TagBox = (props) => {
         </CardContent>
         <CardActions className={classes.card}>
           <div className="tag_item flex-column-center">
-            {final.map((item, index) => {
+            <Link
+              className="tag_link flex-row-center"
+              onClick={(e) => {
+                sendValue(e.target.innerText);
+              }}
+            >
+              ALL
+              <Badge
+                color="secondary"
+                badgeContent={finalArr.length}
+                showZero
+                className="tag_badge"
+              ></Badge>
+            </Link>
+            {finalArr.map((item, index) => {
               return (
                 <>
                   <Link

@@ -15,10 +15,11 @@ const ImageGallery = (props) => {
   // get tag name from tagbox using useContext
   //
   const clickedTag = state.inputText;
-  // console.log(clickedTag);
+  console.log(clickedTag);
   // console.log(searchTag);
 
-  const choosenTag = searchTag === "" ? clickedTag : searchTag;
+  const choosenTag =
+    searchTag === "" ? (clickedTag === "ALL" ? "" : clickedTag) : searchTag;
   // console.log(choosenTag);
 
   const selectedImages =
@@ -54,10 +55,11 @@ const ImageGallery = (props) => {
             <Modal onClose={closeLightbox}>
               <Carousel
                 currentIndex={currentImage}
-                views={selectedImages.map((x) => ({
+                views={selectedImages.map((x, index) => ({
                   ...x,
                   srcset: x.srcSet,
                   caption: x.title,
+                  key: index,
                 }))}
               />
             </Modal>

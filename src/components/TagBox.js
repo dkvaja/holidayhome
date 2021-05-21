@@ -25,22 +25,28 @@ const useStyles = makeStyles({
 });
 const TagBox = (props) => {
   const { state, dispatch } = useContext(AppContext);
+  const classes = useStyles();
+
+
 
   const sendValue = (newValue) => {
     const r = newValue === "" ? "" : newValue.split("\n").shift();
     console.log(r);
     dispatch({ type: "UPDATE_INPUT", data: r });
   };
-  const classes = useStyles();
 
-  let t = [];
-  let n = galleryImages.map((item, index) => item.tags);
-  n.map((item) => {
-    item.split(" ").map((item) => t.push(item.split(" ")));
+
+  let tempraryArr = [];
+  let nArr = galleryImages.map((item, index) => item.tags);
+  nArr.map((item) => {
+    item.split(" ").map((item) => tempraryArr.push(item.split(" ")));
   });
-  t = t.flat();
-  const temp = (val) => t.reduce((a, v) => (v === val ? a + 1 : a), 0);
-  const final = [...new Set(t)];
+  tempraryArr = tempraryArr.flat();
+  const temp = (val) => tempraryArr.reduce((a, v) => (v === val ? a + 1 : a), 0);
+  const final = [...new Set(tempraryArr)];
+
+
+
   return (
     <div className="tag_box">
       <Card className={classes.root}>

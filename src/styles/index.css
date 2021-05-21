@@ -266,7 +266,6 @@ h3 {
 .gallery {
   width: 65%;
   display: flex;
-  background-color: yellow;
 }
 .gallery:hover {
   width: 65%;

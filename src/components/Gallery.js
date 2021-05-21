@@ -5,18 +5,21 @@ import Carousel, { Modal, ModalGateway } from "react-images";
 import galleryImages from "../mockData/galleryImages";
 
 const ImageGallery = (props) => {
+  const { state, dispatch } = useContext(AppContext);
+  const [currentImage, setCurrentImage] = useState(0);
+  const [viewerIsOpen, setViewerIsOpen] = useState(false);
+
   // value get from searchbox
   const searchTag = props.search;
 
-  const { state, dispatch } = useContext(AppContext);
   // get tag name from tagbox using useContext
   //
   const clickedTag = state.inputText;
-  console.log(clickedTag);
-  console.log(searchTag);
+  // console.log(clickedTag);
+  // console.log(searchTag);
 
   const choosenTag = searchTag === "" ? clickedTag : searchTag;
-  console.log(choosenTag);
+  // console.log(choosenTag);
 
   const selectedImages =
     choosenTag === undefined
@@ -26,11 +29,10 @@ const ImageGallery = (props) => {
             ...item,
           }))
           .filter((item) => {
-            return item.tags.includes(choosenTag.toLowerCase()) === true;
+            return item.tags.includes(choosenTag.toLocaleLowerCase()) === true;
           });
 
-  const [currentImage, setCurrentImage] = useState(0);
-  const [viewerIsOpen, setViewerIsOpen] = useState(false);
+  // lightbox function
 
   const openLightbox = useCallback((event, { photo, index }) => {
     setCurrentImage(index);
@@ -42,6 +44,7 @@ const ImageGallery = (props) => {
     setViewerIsOpen(false);
   };
 
+  //
   return (
     <>
       <div className="gallery">

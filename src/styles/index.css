@@ -248,7 +248,29 @@ h3 {
 }
 .category_box {
   margin: 1rem;
+  
 }
+
+
+
+
+
+
+/* reservation page styling */
+
+.form_control{
+  width: 100%;
+  flex-wrap: wrap;
+  /* background-color: wheat; */
+}
+
+
+
+
+
+
+
+
 
 /* gallery styling */
 

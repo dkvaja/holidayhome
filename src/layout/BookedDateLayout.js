@@ -1,35 +1,28 @@
 import React, { useState } from "react";
 import { Box, Paper, makeStyles } from "@material-ui/core";
 import Calendar from "react-calendar";
+import Temp from '../components/Temp';
 import "react-calendar/dist/Calendar.css";
-// import "date-fns";
-// import DateFnsUtils from "@date-io/date-fns";
-// import { Calendar, MuiPickersUtilsProvider } from "@material-ui/pickers";
 import NavigationBar from "../components/Navbar";
 import Footer from "../components/Footer";
 import setDate from "date-fns/setDate";
 
 const useStyles = makeStyles((theme) => ({
-  calnedar: {
-    PointerEvent: "none",
-    bgcolor: "red",
-  },
-  reactCalendar:{
-      backgroundColor:"black"
-  },
-  calnedar2: {
-    PointerEvent: "none",
-    bgcolor: "red",
-    borderRadius:theme.spacing(1),
+  calendar: {
+    pointerEvents: "none",
+    display: "flex",
+    padding: ".5rem",
+    justifyContent: "center",
+    flexWrap: "wrap",
+    backgroundColor: "rgb(206, 255, 206)",
   },
 }));
 
-const setDDate = (num) => {
-  return setDate(new Date(), new Date().getDate() + num);
-};
+const disabledDates = [new Date(2021, 5, 27), new Date(2021, 5, 28)];
 
 const BookedDateLayout = () => {
   const classes = useStyles();
+  const cDate = new Date();
   // const [selectedDate, setSelectedDate] = useState(new Date());
   // const handleDateChange = (date) => {
   //   setSelectedDate(date);
@@ -37,17 +30,10 @@ const BookedDateLayout = () => {
   return (
     <>
       <NavigationBar />
-      <Box
-        p={2}
-        bgcolor="green"
-        className={classes.calnedar}
-        justifyContent="center"
-        display="flex"
-      >
+      <Box p={2} className={classes.calendar} justifyContent="center">
         <Calendar
-          className={classes.calnedar2}
+          className="date_disable"
           maxDetail="month"
-          showNavigation
           minDetail="month"
           defaultView="month"
           showNeighboringMonth={false}
@@ -55,14 +41,10 @@ const BookedDateLayout = () => {
           prevLabel={null}
           next2Label={null}
           prev2Label={null}
-          defaultValue={[
-            new Date(),
-            setDate(new Date(), new Date().getDate() + 1),
-          ]}
-          tileDisabled={() => true}
+          defaultValue={disabledDates}
         />
         <Calendar
-          className={classes.calnedar2}
+          className="date_disable"
           maxDetail="month"
           showNavigation
           minDetail="month"
@@ -73,13 +55,12 @@ const BookedDateLayout = () => {
           next2Label={null}
           prev2Label={null}
           defaultValue={[
-            new Date(),
-            setDate(new Date(), new Date().getDate() + 1),
+            new Date(2021, 5, 1),
+            setDate(new Date(2021, 5, 1), new Date(2021, 5, 1).getDate() + 1),
           ]}
-          tileDisabled={() => true}
         />
         <Calendar
-          className={classes.calnedar2}
+          className="date_disable"
           maxDetail="month"
           showNavigation
           minDetail="month"
@@ -90,13 +71,12 @@ const BookedDateLayout = () => {
           next2Label={null}
           prev2Label={null}
           defaultValue={[
-            new Date(),
-            setDate(new Date(), new Date().getDate() + 1),
+            new Date(2021, 6, 1),
+            setDate(new Date(2021, 6, 1), new Date(2021, 6, 1).getDate() + 1),
           ]}
-          tileDisabled={() => true}
         />
         <Calendar
-          className={classes.calnedar2}
+          className="date_disable"
           maxDetail="month"
           showNavigation
           minDetail="month"
@@ -107,13 +87,12 @@ const BookedDateLayout = () => {
           next2Label={null}
           prev2Label={null}
           defaultValue={[
-            new Date(),
-            setDate(new Date(), new Date().getDate() + 1),
+            new Date(2021, 7, 1),
+            setDate(new Date(2021, 7, 1), new Date(2021, 7, 1).getDate() + 1),
           ]}
-          tileDisabled={() => true}
         />
       </Box>
-
+          <Temp/>
       <Footer />
     </>
   );

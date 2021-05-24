@@ -375,3 +375,28 @@ p {
   font-size: 0.8rem;
   text-align: center;
 }
+
+
+
+
+
+
+
+/* date disable  */
+
+
+.date_disable{
+  /* pointer-events: none; */
+  margin:1rem;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 10px;
+  color: var(--master-color);
+}
+
+.myClassName{
+  background-color: #004b23;
+  pointer-events: none;
+  color: white;
+  border-radius: 50%;
+}

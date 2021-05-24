@@ -5,6 +5,7 @@ const tData = [
     author: "Roland Weedon",
     designaton: "CEO XYZ Infotech",
     avtarIcon: "https://i.pravatar.cc/300",
+    rating:4
   },
   {
     words:
@@ -12,6 +13,7 @@ const tData = [
     author: "Kelsi Gordon",
     designaton: "CFO XYZ solution",
     avtarIcon: "https://i.pravatar.cc/300",
+    rating:2
   },
   {
     words:
@@ -19,6 +21,7 @@ const tData = [
     author: "Tasha Zuzalek",
     designaton: "COO AB Infotech",
     avtarIcon: "https://i.pravatar.cc/300",
+    rating:5
   },
 ];
 

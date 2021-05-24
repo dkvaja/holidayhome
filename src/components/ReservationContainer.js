@@ -6,6 +6,7 @@ import DateFnsUtils from "@date-io/date-fns";
 import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
+  
 } from "@material-ui/pickers";
 import Box from "@material-ui/core/Box";
 import Container from "@material-ui/core/Container";
@@ -44,7 +45,9 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     width: "35%",
-    maxWidth: "90%",
+    ["@media (max-width:800px)"]: {
+      width: "90%",
+    },
     borderRadius: theme.spacing(1),
     justifyContent: "center",
     alignItems: "center",

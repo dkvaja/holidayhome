@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import tData from '../mockData/TestimonialData';
+import tData from "../mockData/TestimonialData";
 import Slider from "react-animated-slider";
 import "react-animated-slider/build/horizontal.css";
-import Avatar from "@material-ui/core/Avatar";
+import { Avatar, Typography, Box } from "@material-ui/core";
+import { Rating } from "@material-ui/lab";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -31,6 +32,9 @@ const TestimonialBox = () => {
           {tData.map((slide, index) => (
             <div key={index} className="flex-column-center slider_box">
               <h2 className="section-desc">{slide.words}</h2>
+              <Box component="fieldset" m={1} borderColor="transparent">
+                <Rating name="rating" value={slide.rating} readOnly />
+              </Box>
               <Avatar
                 alt={slide.author}
                 src={slide.avtarIcon}

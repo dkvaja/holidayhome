@@ -23,9 +23,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-Object.keys(RateTableData).map((item, index) =>
-  console.log(RateTableData[item].week)
-);
+// Object.keys(RateTableData).map((item, index) =>
+//   console.log(RateTableData[item].week)
+// );
 
 export default function RateTable() {
   const classes = useStyles();

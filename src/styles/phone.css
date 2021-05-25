@@ -7,6 +7,14 @@
     height: auto;
     padding: 0rem;
   }
+  .logo_heading {
+   
+    font-size: 1.3rem;
+   
+  }
+  .logo_div img {
+    width: 3rem;
+  }
   .nav-link-box {
     height: auto;
     width: 100%;
@@ -38,7 +46,22 @@
   .wrapper {
     justify-content: space-between;
     width: 100%;
+    padding: .4rem .7rem;
   }
+
+
+  .slider {
+    height: 30rem;
+  }
+  .slider_box {
+    justify-content: space-evenly;
+    
+  }
+
+  .menu_btn_wrapper button {
+  
+  padding: 0.2rem 0.3rem;
+}
   .menu_btn_wrapper {
     display: block;
   }
@@ -49,4 +72,12 @@
   .gallery {
     width: 100%;
   }
+  .gallery_outer_box {
+    justify-content: center;
+    align-items: center;
+  }
+  .gallery_container {
+    padding: 2rem 1rem;
 }
+}
+

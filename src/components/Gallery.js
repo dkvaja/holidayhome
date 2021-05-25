@@ -49,7 +49,7 @@ const ImageGallery = (props) => {
   return (
     <>
       <div className="gallery">
-        <Gallery photos={selectedImages} onClick={openLightbox} />
+        <Gallery photos={selectedImages} onClick={openLightbox}  />
         <ModalGateway>
           {viewerIsOpen ? (
             <Modal onClose={closeLightbox}>

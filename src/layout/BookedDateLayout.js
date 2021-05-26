@@ -1,24 +1,55 @@
-import React, { useState, useCallback } from "react";
+import React, { useState } from "react";
 import { makeStyles, Box, Typography, ThemeProvider } from "@material-ui/core";
-import { differenceInCalendarDays } from "date-fns";
-import CalendarBox from "../components/CalendarBox";
+import bookingData from "../mockData/BookedData";
 import Ram from "../components/Ram";
-import "react-calendar/dist/Calendar.css";
 import myTheme from "../styles/Theme";
 import NavigationBar from "../components/Navbar";
 import Footer from "../components/Footer";
+
+// array for store individual month dates
+
+const months = [[], [], [], [], [], [], [], [], [], [], [], []];
+
+// get dates from bookingdData and push it on individual sub array
+
+bookingData
+  .filter((i) => i.arrivalDate.getMonth() === i.departureDate.getMonth())
+  .map((item) =>
+    months[item.arrivalDate.getMonth()].push(
+      item.arrivalDate,
+      item.departureDate
+    )
+  );
+
+// add all dates between arrivalDate and departureDate to sub array in months array
+
+for (let i = 0; i < months.length; i++) {
+  if (months[i].length > 0) {
+    console.log(months[i]);
+    console.log(months[i][0]);
+    console.log(months[i][0].getDate());
+    console.log(months[i][1].getDate());
+    for (let j = months[i][0].getDate(); j < months[i][1].getDate(); j++) {
+      months[i].push(new Date(months[i][0]).setDate(j));
+    }
+  }
+}
 
 const useStyles = makeStyles((theme) => ({
   calendarBox: {
     backgroundColor: "rgb(206, 255, 206)",
     padding: "2rem 0rem",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
   },
   calendar: {
     pointerEvents: "none",
     display: "flex",
     padding: ".5rem",
     color: "#004b23",
-    minHeight: "100vh",
+   
     justifyContent: "center",
     flexWrap: "wrap",
     backgroundColor: "rgb(206, 255, 206)",
@@ -32,61 +63,12 @@ const useStyles = makeStyles((theme) => ({
     color: "#fff",
     padding: ".1rem .6rem",
     borderRadius: "50%",
-    margin: "0rem .5rem",
+    margin: "0rem .3rem",
   },
 }));
 
-function isSameDay(a, b) {
-  return differenceInCalendarDays(a, b) === 0;
-}
-
-const datesToAddClassTo = [
-  new Date(2021, 4, 27),
-  new Date(2021, 4, 30),
-  new Date(2021, 4, 23),
-  new Date(2021, 4, 20),
-  new Date(2021, 4, 21),
-  new Date(2021, 5, 21),
-  new Date(2021, 5, 22),
-  new Date(2021, 5, 24),
-  new Date(2021, 5, 25),
-  new Date(2021, 6, 20),
-  new Date(2021, 6, 21),
-  new Date(2021, 6, 22),
-];
-const may = [
-  new Date(2021, 4, 27),
-  new Date(2021, 4, 30),
-  new Date(2021, 4, 23),
-  new Date(2021, 4, 20),
-  new Date(2021, 4, 21)]
-const july = [
-  new Date(2021, 6, 20),
-  new Date(2021, 6, 21),
-  new Date(2021, 6, 22),
-];
-
-const june = [
-  new Date(2021, 5, 21),
-  new Date(2021, 5, 22),
-  new Date(2021, 5, 24),
-];
-
 const BookedDateLayout = () => {
-  const tileClassName = useCallback(
-    ({ date, view }) => {
-      console.log(date);
-      if (view === "month") {
-        if (datesToAddClassTo.find((dDate) => isSameDay(dDate, date))) {
-          return "myClassName";
-        }
-      }
-    },
-    [datesToAddClassTo]
-  );
-
   const classes = useStyles();
-
   return (
     <>
       <ThemeProvider theme={myTheme}>
@@ -100,10 +82,18 @@ const BookedDateLayout = () => {
           >
             Booked Dates
           </Typography>
-          <Typography variant="h6" align="center" color="#004b23">
+          <Typography variant="h6" align="center" color="#004b23" gutterBottom>
             In the high season the changeover days are only on Fridays.
           </Typography>
-          <Box justifyContent="center" display="flex">
+          <Box
+            justifyContent="center"
+            display="flex"
+            alignItems="center"
+            bgcolor="white"
+            py={1.5}
+            borderRadius={myTheme.spacing(1)}
+            width="8rem"
+          >
             <Typography
               variant="subtitle1"
               className={classes.badge}
@@ -111,34 +101,14 @@ const BookedDateLayout = () => {
             >
               1
             </Typography>
-            <Typography variant="body1" gutterBottom>
-              Booked
-            </Typography>
+            <Typography variant="body1">Booked</Typography>
           </Box>
           <Box p={2} className={classes.calendar}>
-            {/* {datesToAddClassTo.map((item, index) => {
-              return (
-                <CalendarBox
-                  tileClassName={tileClassName}
-                  key={index}
-                  value={item}
-                />
-              );
-            })} */}
-            <Ram arr={may}/>
-            <Ram arr={june}/>
-            <Ram arr={july}/>
-            
-            {/* {
-            datesToAddClassTo.forEach((item,index)=>{
-              if(item.getMonth() === 4)
-              {
-              console.log(item,index);
-              return <CalendarBox tileClassName={tileClassName} key={index} value={item}/>
+            {months.map((dateItem) => {
+              if (dateItem.length > 0) {
+                return <Ram arr={dateItem} />;
               }
-            })
-            
-          } */}
+            })}
           </Box>
         </Box>
         <Footer />
